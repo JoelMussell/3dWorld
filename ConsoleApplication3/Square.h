@@ -17,11 +17,8 @@ public:
 	void left();
 	int getx();
 	int gety();
-	const char * getName();
 	void gravity();
 	int ground();
-
-	RGBcolor getColor();
 
 	enum jump_2 {
 		completed,
@@ -34,9 +31,5 @@ public:
 	int y;
 	int v;
 	int j;
-	const char * name;
-	RGBcolor color;
-
-	static int numSquares;
 };
 

@@ -1,20 +1,14 @@
 #include "pch.h"
 #include "Square.h"
 
-int Square::numSquares = 0;
 Square::Square(const char * squareName, Square::RGBcolor squareColor)
 {
 	speed = 3;
 	x = 10;
 	y = 400;
 	v = 0;
-	name = squareName;
-	color = squareColor;
 	j = completed;
-	numSquares++;
 }
-
-
 
 Square::~Square()
 {
@@ -58,14 +52,6 @@ int Square::gety() {
 	return y;
 }
 
-const char * Square::getName() {
-	return name;
-}
-
-Square::RGBcolor Square::getColor(){
-	return color;
-}
-
 void Square::gravity() {
 	if (y == ground() && 440 < x && x < 490) {
 		v = 60;
@@ -85,18 +71,5 @@ void Square::gravity() {
 }
 
 int Square::ground() {
-	int a = 0;
-	/*if (x < 400) {
-		a = 200;
-	}
-	else if (x < 440) {
-		a = 210;
-	}
-	else */if (x < 500) {
-		a = 200;
-	}
-	else {
-		a = 300;
-	}
-	return a;
+	return 0;
 }

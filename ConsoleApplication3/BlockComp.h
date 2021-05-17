@@ -20,5 +20,4 @@ public:
 	void generateBlock(int x, int y, int z, Constants::RGBcolor color);
 	void generateTree(int x, int y);
 	Constants::RGBcolor getBlock(int x, int y, int z);
-	int getAltitude(int x, int y);
 };

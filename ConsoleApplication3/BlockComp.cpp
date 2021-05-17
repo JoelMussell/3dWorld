@@ -48,16 +48,3 @@ Constants::RGBcolor BlockComp::getBlock(int x, int y, int z)
 {
 	return BlockComp::block[x][y][z];
 }
-
-int BlockComp::getAltitude(int x, int y)
-{
-	if (y - x > 0 && y + x > 509 << 1 && y > 513)
-		return 4;
-	if (x > 513)
-		return 3;
-	if (x < 505)
-		return 2;
-	if (x == 512 && y == 512)
-		return 2;
-	return 0;
-}

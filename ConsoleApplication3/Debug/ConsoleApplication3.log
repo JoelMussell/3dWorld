@@ -1,17 +1,21 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ConsoleApplication3.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  BlockComp.cpp
   BlockGame.cpp
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(426): warning C4244: 'argument': conversion from 'short' to 'GLbyte', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(433): warning C4244: 'argument': conversion from 'short' to 'GLbyte', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(434): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(435): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(436): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(437): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(444): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(445): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(446): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(447): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(454): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(455): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(456): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(457): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(288): warning C4244: 'argument': conversion from 'short' to 'GLbyte', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(295): warning C4244: 'argument': conversion from 'short' to 'GLbyte', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(296): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(297): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(298): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(299): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(306): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(307): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(308): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(309): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(316): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(317): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(318): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(319): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  Constants.cpp
+  Square.cpp
+  Generating Code...
   ConsoleApplication3.vcxproj -> C:\Users\Joel M\source\repos\Games\BlockGame\Debug\BlockGame.exe

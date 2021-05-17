@@ -122,13 +122,6 @@ void draw() {
 	glLoadIdentity();
 
 	// draw squares
-/*	for (int x = 0; x < xBlocks && x < width / blockSize; x++)
-	{
-		for (int y = 0; y < yBlocks && y < height / blockSize; y++)
-		{
-			drawRect(width / 2 + x * blockSize + xLocation * 10, height / 2 + y * blockSize + yLocation * 10, blockSize, blockSize, pBlockComp->getBlock(x, y));
-		}
-	}*/ 
 	int xBlocksRadius = (width >> blockSize >> 1);
 	int yBlocksRadius = (height >> blockSize >> 1);
 	int xOffset = (width >> 1);
@@ -229,124 +222,9 @@ void draw() {
 					}
 				}
 			}
-		}/*
-		for (int x = xBlocksRadius; x >= 0; x--)
-		{
-			int altitude = pBlockComp->getAltitude(-x-1 + xLocation, y + yLocation);
-			int altitudeShift = (blockSlant + blockSlant - blockSize - blockSize + 7);
-			int xHeightAdjustment = (altitude * x) << 7 >> altitudeShift;
-			int xHeightAdjustment1 = (altitude * (x + 1)) << 7 >> altitudeShift;
-			int yHeightAdjustment = (altitude * y) << 7 >> altitudeShift;
-			int yHeightAdjustment1 = (altitude * (y + 1)) << 7 >> altitudeShift;
-			int inside = (x << blockSize) + xHeightAdjustment;
-			int outside = ((x + 1) << blockSize) + xHeightAdjustment1;
-			int front = (y << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment;
-			int back = ((y + 1) << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment1;
-			int bottomFront = (y << blockSize);
-			int bottomInside = (x) << blockSize;
-			int bottomOutside = (x + 1) << blockSize;
-			int bottomBack = (y + 1) << blockSize;
-			int z = 0;//altitude;
-			Constants::RGBcolor blockColor = pBlockComp->getBlock(-x - 1 + xLocation, y + yLocation, z + zLocation);
-			if (blockColor.green != pConstants->NONE.green)
-			{
-				drawRect(xOffset - inside,
-					yOffset + back,
-					xOffset - outside,
-					yOffset + front,
-					blockColor);
-				drawFront(xOffset - outside,
-					xOffset - inside,
-					yOffset + front,
-					xOffset - bottomOutside,
-					xOffset - bottomInside,
-					yOffset + bottomFront,
-					blockColor, 10);
-				drawSide(xOffset - inside,
-					yOffset + back,
-					yOffset + front,
-					xOffset - bottomInside,
-					yOffset + bottomBack,
-					yOffset + bottomFront,
-					blockColor, 20);
-			}
-		}*/
+		}
 	}
-	/*
-	int xBlocksRadius = (width >> blockSize >> 1) + 2;
-	int yBlocksRadius = (height >> blockSize >> 1) + 2;
-	for (int y = yBlocksRadius; y >= max(0, -yLocation) - yBlocksRadius; y--)
-		{
-	for (int x = xBlocksRadius-1; x >= max(1, -xLocation); x--)
-	{
-			int altitude = pBlockComp->getAltitude(x + xLocation, y + yLocation);
-			int altitudeShift = (blockSlant + blockSlant - blockSize - blockSize + 7);
-			int xHeightAdjustment = (altitude * x + 2) << 7 >> altitudeShift;
-			int xWidthAdjustment = (1 << blockSize) + ((altitude) << 7 >> altitudeShift) + 0;
-			drawRect(((x + xBlocksRadius - 2) << blockSize) + xHeightAdjustment,
-				((y + yBlocksRadius) << blockSize) + (altitude << blockSize >> 1),
-				xWidthAdjustment, (1 << blockSize),
-				pBlockComp->getBlock(x + xLocation, y + yLocation));
-			if (altitude > 0)
-			{
 
-				int altitudeTemp = pBlockComp->getAltitude(x + xLocation, y + yLocation);
-				int xHeightAdjustmentTemp = (altitudeTemp * x) << blockSize << blockSize >> blockSlant >> blockSlant;
-				drawFront((x + xBlocksRadius - 2) << blockSize,
-					(y + yBlocksRadius) << blockSize,
-					(1 << blockSize), altitudeTemp << blockSize >> 1,
-					xHeightAdjustmentTemp,
-					pBlockComp->getBlock(x + xLocation, y + yLocation), 10);
-				/*drawSide((x + xBlocksRadius - 2) << blockSize,
-					(y + yBlocksRadius) << blockSize,
-					xWidthAdjustment, altitude << blockSize >> 1,
-					xHeightAdjustment,
-					pBlockComp->getBlock(x + xLocation, y + yLocation), 10);
-				drawSide((x + xBlocksRadius - 2) << blockSize,
-					(y + yBlocksRadius) << blockSize,
-					xHeightAdjustment, 1 << blockSize,
-					0, altitude << blockSize >> 1,
-					//0 + altitude, altitude << blockSize >> 1,
-					pBlockComp->getBlock(x + xLocation, y + yLocation), 20);*/
-/*}
-		}
-	}
-	for (int x = max(0, -xLocation) - xBlocksRadius-1; x < max(0, -xLocation); x++)
-	{
-		for (int y = yBlocksRadius; y >= max(0, -yLocation) - yBlocksRadius; y--)
-		{
-			int altitude = pBlockComp->getAltitude(x + xLocation, y + yLocation);
-			int altitudeShift = (blockSlant + blockSlant - blockSize - blockSize + 7);
-			int xHeightAdjustment = (altitude * x + 2) << 7 >> altitudeShift;
-			int x1;
-			int y1;
-			int x2;
-			int y2;
-			int lx1;
-			int lx2sx1;
-			int ly1sy2;
-			int sy1;
-			int xWidthAdjustment = (1 << blockSize) + ((altitude) << 7 >> altitudeShift) + 0;
-			drawRect(((x + xBlocksRadius - 2) << blockSize) + xHeightAdjustment,
-				((y + yBlocksRadius) << blockSize) + (altitude << blockSize >> 1),
-				1 << blockSize, 1 << blockSize,
-				pBlockComp->getBlock(x + xLocation, y + yLocation));
-			if (altitude > 0)
-			{
-				drawFront((x + xBlocksRadius - 2) << blockSize,
-					(y + yBlocksRadius) << blockSize,
-					1 << blockSize, altitude << blockSize >> 1,
-					xHeightAdjustment,
-					pBlockComp->getBlock(x + xLocation, y + yLocation), 10);
-				drawSide((x + xBlocksRadius - 2+1) << blockSize,
-					(y + yBlocksRadius) << blockSize,
-					xHeightAdjustment, 1 << blockSize,
-					altitude << blockSize >> 1,
-					pBlockComp->getBlock(x + xLocation, y + yLocation), 20);
-			}
-		}
-	}
-*/
 	// swap buffers (has to be done at the end)
 	glutSwapBuffers();
 }
@@ -380,23 +258,7 @@ void keyboard() {
 		while (GetAsyncKeyState(VK_LSHIFT))
 		{
 		}
-	}/*
-	if (GetAsyncKeyState(0x57))
-	{
-		SquareList[player2]->jump();
-		while (GetAsyncKeyState(0x57))
-		{
-
-		}
 	}
-	if (!GetAsyncKeyState(0x57))
-	{
-		//SquareList[player2]->resetJump();
-	}
-	if (GetAsyncKeyState(0x53))
-	{
-		SquareList[player2]->down();
-	}*/
 	if (GetAsyncKeyState(0x44))
 	{
 		zLocation--;
@@ -457,37 +319,6 @@ void drawSide(int x1, int y1t, int y1b, int x2, int y2t, int y2b, Constants::RGB
 		glVertex2f(x2, y2t);
 		glEnd();
 }
-/*
-void drawRect(int x, int y, int width, int height, Constants::RGBcolor squareColor) {
-	glBegin(GL_QUADS);
-	glColor3b(squareColor.red, squareColor.green, squareColor.blue);
-	glVertex2f(x, y);
-	glVertex2f(x + width, y);
-	glVertex2f(x + width, y + height);
-	glVertex2f(x, y + height);
-	glEnd();
-}
-
-void drawFront(int x, int y, int width, int height, int xOffset, Constants::RGBcolor squareColor, int colorOffset) {
-	glBegin(GL_QUADS);
-	glColor3b(squareColor.red - colorOffset, squareColor.green - colorOffset, squareColor.blue - colorOffset);
-	glVertex2f(x, y);
-	glVertex2f(x + width, y);
-	glVertex2f(x + width + xOffset, y + height);
-	glVertex2f(x + xOffset + (xOffset >> 1), y + height);
-	glEnd();
-}
-
-void drawSide(int x, int y, int width, int height, int yOffset, Constants::RGBcolor squareColor, int colorOffset) {
-	glBegin(GL_QUADS);
-	glColor3b(squareColor.red - colorOffset, squareColor.green - colorOffset, squareColor.blue - colorOffset);
-	glVertex2f(x, y);
-	glVertex2f(x + width, y + yOffset);
-	glVertex2f(x + width, y + height + yOffset);
-	glVertex2f(x, y + height);
-	glEnd();
-}
-*/
 
 std::string int2str(int x) {
 	// converts int to string
