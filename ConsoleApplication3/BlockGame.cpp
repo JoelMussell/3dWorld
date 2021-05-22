@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
 void setUp() {
 	pConstants = new Constants();
 	pBlockComp = new BlockComp(pConstants->NONE);
-	blockSize = 5;
+	blockSize = 3;
 	blockSlant = 5;
 	xLocation = xBlocks / 2;
 	yLocation = yBlocks / 2;
@@ -142,27 +142,7 @@ void draw() {
 				Constants::RGBcolor frontBlockColor = pBlockComp->getBlock(x + xLocation, y + yLocation - 1, z + zLocation);
 				Constants::RGBcolor sideBlockColor = pBlockComp->getBlock(x + xLocation - 1, y + yLocation, z + zLocation);
 				if (blockColor.green != pConstants->NONE.green)
-				{/*
-					int altitude = z;
-					int altitudeShift = (blockSlant + blockSlant - blockSize - blockSize + 7);
-					int xHeightAdjustment = (altitude * x) << 7 >> altitudeShift;
-					int xHeightAdjustment1 = (altitude * (x + 1)) << 7 >> altitudeShift;
-					int yHeightAdjustment = (altitude * y) << 7 >> altitudeShift;
-					int yHeightAdjustment1 = (altitude * (y + 1)) << 7 >> altitudeShift;
-					int inside = (x << blockSize) + xHeightAdjustment;
-					int outside = ((x + 1) << blockSize) + xHeightAdjustment1;
-					int front = (y << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment;
-					int back = ((y + 1) << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment1;
-					altitude = z - 1;
-					int xHeightAdjustment2 = (altitude * x) << 7 >> altitudeShift;
-					int xHeightAdjustment3 = (altitude * (x + 1)) << 7 >> altitudeShift;
-					int yHeightAdjustment2 = (altitude * y) << 7 >> altitudeShift;
-					int yHeightAdjustment3 = (altitude * (y + 1)) << 7 >> altitudeShift;
-					int bottomInside = (x << blockSize) + xHeightAdjustment2;
-					int bottomOutside = ((x + 1) << blockSize) + xHeightAdjustment3;
-					int bottomFront = (y << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment2;
-					int bottomBack = ((y + 1) << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment3;*/
-
+				{
 					int inside = xCoordinates[x][y + yBlocksRadius][z + 1];
 					int outside = xCoordinates[x + 1][y + yBlocksRadius][z + 1];
 					int front = yCoordinates[x][y + yBlocksRadius][z + 1];
@@ -207,26 +187,6 @@ void draw() {
 				sideBlockColor = pBlockComp->getBlock(-x - 1 + xLocation + 1, y + yLocation, z + zLocation);
 				if (blockColor.green != pConstants->NONE.green)
 				{
-					/*int altitude = z;
-					int altitudeShift = (blockSlant + blockSlant - blockSize - blockSize + 7);
-					int xHeightAdjustment = (altitude * x) << 7 >> altitudeShift;
-					int xHeightAdjustment1 = (altitude * (x + 1)) << 7 >> altitudeShift;
-					int yHeightAdjustment = (altitude * y) << 7 >> altitudeShift;
-					int yHeightAdjustment1 = (altitude * (y + 1)) << 7 >> altitudeShift;
-					int inside = (x << blockSize) + xHeightAdjustment;
-					int outside = ((x + 1) << blockSize) + xHeightAdjustment1;
-					int front = (y << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment;
-					int back = ((y + 1) << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment1;
-					altitude = z - 1;
-					int xHeightAdjustment2 = (altitude * x) << 7 >> altitudeShift;
-					int xHeightAdjustment3 = (altitude * (x + 1)) << 7 >> altitudeShift;
-					int yHeightAdjustment2 = (altitude * y) << 7 >> altitudeShift;
-					int yHeightAdjustment3 = (altitude * (y + 1)) << 7 >> altitudeShift;
-					int bottomInside = (x << blockSize) + xHeightAdjustment2;
-					int bottomOutside = ((x + 1) << blockSize) + xHeightAdjustment3;
-					int bottomFront = (y << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment2;
-					int bottomBack = ((y + 1) << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment3;*/
-
 					int inside = xCoordinates[x][y + yBlocksRadius][z + 1];
 					int outside = xCoordinates[x + 1][y + yBlocksRadius][z + 1];
 					int front = yCoordinates[x][y + yBlocksRadius][z + 1];
