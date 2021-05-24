@@ -12,6 +12,7 @@ Constants::Constants()
 	BLUE = { 0,0,100 };
 	YELLOW = { 255/2,255/2,0 };
 	BROWN = { 150/2,75/2,0 };
+	GRAY = { 50,50,50 };
 	LIGHT_BLUE = { 135 / 2,206 / 2,235 / 2 };
 }
 

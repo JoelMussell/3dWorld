@@ -17,6 +17,7 @@ public:
 	RGBcolor BLUE;
 	RGBcolor YELLOW;
 	RGBcolor BROWN;
+	RGBcolor GRAY;
 	RGBcolor LIGHT_BLUE;
 	
 	Constants();

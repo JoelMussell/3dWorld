@@ -100,16 +100,21 @@ void setUp() {
 	pBlockComp->generateTree(xBlocks / 2 + 200, yBlocks / 2 + 5);
 	pBlockComp->generateTree(xBlocks / 2 + 400, yBlocks / 2 + 5);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 0, pConstants->RED);*/
-	pBlockComp->generateRect(505, 507, 505, 507, 4, 6, pConstants->DARK_GREEN);
-	pBlockComp->generateRect(506, 506, 506, 506, 1, 3, pConstants->BROWN);
-	pBlockComp->generateRect(0, 1023, 0, 1023, 0, 1, pConstants->GREEN);
+	pBlockComp->generateFlowerField(0, 1023, 0, 1023, 11, 9, 13);
+	//pBlockComp->generateFlower(500, 500, 11, 10, pConstants->RED);
+	//pBlockComp->generateRect(505, 507, 505, 507, 14, 16, pConstants->DARK_GREEN);
+	//pBlockComp->generateRect(506, 506, 506, 506, 10, 13, pConstants->BROWN);
+	pBlockComp->generateRect(0, 1023, 0, 1023, 0, 4, pConstants->GRAY);
+	pBlockComp->generateRect(0, 1023, 0, 1023, 5, 9, pConstants->BROWN);
+	pBlockComp->generateRect(0, 1023, 0, 1023, 10, 10, pConstants->GREEN);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 5, pConstants->RED);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 1, pConstants->RED);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 2, pConstants->GREEN);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 3, pConstants->BLUE);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 6, pConstants->BLUE);
-	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 48, pConstants->YELLOW);
+	//pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 48, pConstants->YELLOW);
 }
+
 void update(int value) {
 	// input handling
 	keyboard();
@@ -239,6 +244,8 @@ void calculateCoordinates()
 	int yBlocksRadius = (height >> blockSize >> 1);
 	int xOffset = (width >> 1);
 	int yOffset = (height >> 1);
+	
+	float slant = .9;
 
 	for (int y = yBlocksRadius+1; y >= -yBlocksRadius; y--)
 	{
@@ -254,8 +261,8 @@ void calculateCoordinates()
 				int yHeightAdjustment1 = (altitude * (y + 1)) << 7 >> altitudeShift;
 				int inside = (x << blockSize) + xHeightAdjustment;
 				int outside = ((x + 1) << blockSize) + xHeightAdjustment1;
-				int front = (y << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment;
-				int back = ((y + 1) << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment1;
+				int front = (y << blockSize) + ((altitude << blockSize) * slant) + yHeightAdjustment;
+				int back = ((y + 1) << blockSize) + ((altitude << blockSize) * slant) + yHeightAdjustment1;
 				altitude = z - 1;
 				int xHeightAdjustment2 = (altitude * x) << 7 >> altitudeShift;
 				int xHeightAdjustment3 = (altitude * (x + 1)) << 7 >> altitudeShift;
@@ -263,8 +270,8 @@ void calculateCoordinates()
 				int yHeightAdjustment3 = (altitude * (y + 1)) << 7 >> altitudeShift;
 				int bottomInside = (x << blockSize) + xHeightAdjustment2;
 				int bottomOutside = ((x + 1) << blockSize) + xHeightAdjustment3;
-				int bottomFront = (y << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment2;
-				int bottomBack = ((y + 1) << blockSize) + (altitude << blockSize >> 1) + yHeightAdjustment3;
+				int bottomFront = (y << blockSize) + ((altitude << blockSize) * slant) + yHeightAdjustment2;
+				int bottomBack = ((y + 1) << blockSize) + ((altitude << blockSize) * slant) + yHeightAdjustment3;
 				xCoordinates[x][y + yBlocksRadius][z + 1] = inside;
 				yCoordinates[x][y + yBlocksRadius][z + 1] = front;
 			}
