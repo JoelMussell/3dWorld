@@ -113,26 +113,6 @@ void setUp() {
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 3, pConstants->BLUE);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 6, pConstants->BLUE);
 	pBlockComp->generateRect(xBlocks / 2 - 20, xBlocks / 2 + 20, yBlocks / 2 - 20, yBlocks / 2 + 20, 11, 25, pConstants->NONE);
-	/*
-	pBlockComp->generateRect(xBlocks / 2 - 1, xBlocks / 2 - 1, yBlocks / 2 - 1, yBlocks / 2, 14, 14, pConstants->BLACK);
-	pBlockComp->generateRect(xBlocks / 2 + 2, xBlocks / 2 + 2, yBlocks / 2 - 1, yBlocks / 2, 14, 14, pConstants->BLACK);
-	pBlockComp->generateRect(xBlocks / 2 - 1, xBlocks / 2 - 1, yBlocks / 2, yBlocks / 2, 15, 17, pConstants->BLUE);
-	pBlockComp->generateRect(xBlocks / 2 + 2, xBlocks / 2 + 2, yBlocks / 2, yBlocks / 2, 15, 18, pConstants->BLUE);
-	pBlockComp->generateRect(xBlocks / 2 - 1, xBlocks / 2 + 2, yBlocks / 2 - 1, yBlocks / 2 + 1, 18, 18, pConstants->BLUE);
-	pBlockComp->generateRect(xBlocks / 2 - 1, xBlocks / 2 + 2, yBlocks / 2 - 1, yBlocks / 2 + 1, 19, 22, pConstants->RED);
-	pBlockComp->generateRect(xBlocks / 2 + 3, xBlocks / 2 + 3, yBlocks / 2, yBlocks / 2, 19, 22, pConstants->RED);
-	pBlockComp->generateBlock(xBlocks / 2 + 3, yBlocks / 2, 18, pConstants->SKIN_WHITE);
-	pBlockComp->generateRect(xBlocks / 2 - 2, xBlocks / 2 - 2, yBlocks / 2, yBlocks / 2, 19, 22, pConstants->RED);
-	pBlockComp->generateBlock(xBlocks / 2 - 2, yBlocks / 2, 18, pConstants->SKIN_WHITE);
-	pBlockComp->generateRect(xBlocks / 2, xBlocks / 2 + 1, yBlocks / 2, yBlocks / 2, 23, 23, pConstants->SKIN_WHITE);
-	pBlockComp->generateRect(xBlocks / 2 - 1, xBlocks / 2 + 2, yBlocks / 2 - 2, yBlocks / 2 + 1, 24, 27, pConstants->SKIN_WHITE);
-	pBlockComp->generateRect(xBlocks / 2 - 1, xBlocks / 2 + 2, yBlocks / 2 + 1, yBlocks / 2 + 1, 26, 26, pConstants->BROWN);
-	pBlockComp->generateRect(xBlocks / 2 - 1, xBlocks / 2 + 2, yBlocks / 2, yBlocks / 2 + 1, 27, 27, pConstants->BROWN);
-	pBlockComp->generateRect(xBlocks / 2 - 1, xBlocks / 2 + 2, yBlocks / 2 - 2, yBlocks / 2 + 1, 28, 28, pConstants->BROWN);
-	pBlockComp->generateRect(xBlocks / 2, xBlocks / 2 + 1, yBlocks / 2 - 2, yBlocks / 2 - 2, 24, 24, pConstants->BLACK);
-	pBlockComp->generateBlock(xBlocks / 2 - 1, yBlocks / 2 - 2, 26, pConstants->BLACK);
-	pBlockComp->generateBlock(xBlocks / 2 + 2, yBlocks / 2 - 2, 26, pConstants->BLACK);
-	*/
 
 	pBlockComp->generateRect(xBlocks / 2 - 2, xBlocks / 2 - 1, yBlocks / 2 - 1, yBlocks / 2 + 1, 14, 14, pConstants->BLACK);
 	pBlockComp->generateRect(xBlocks / 2 + 1, xBlocks / 2 + 2, yBlocks / 2 - 1, yBlocks / 2 + 1, 14, 14, pConstants->BLACK);
