@@ -41,6 +41,22 @@ void BlockComp::generateBlock(int x, int y, int z, Constants::RGBcolor color)
 	BlockComp::block[x][y][z] = color;
 }
 
+bool BlockComp::checkForOccupiedBlocks(int x1, int x2, int y1, int y2, int z1, int z2)
+{
+	for (int x = x1; x <= x2; x++)
+	{
+		for (int y = y1; y <= y2; y++)
+		{
+			for (int z = z1; z <= z2; z++)
+			{
+				if (BlockComp::block[x][y][z].green != -1)
+					return true;
+			}
+		}
+	}
+	return false;
+}
+
 void BlockComp::generateStem(int x, int y, int z, int height, Constants::RGBcolor color)
 {
 	generateRect(x, x, y, y, z, z + height, color);
@@ -60,14 +76,27 @@ void BlockComp::generateGrassField(int x1, int x2, int y1, int y2, int z, int ma
 	}
 }
 
-void BlockComp::generateFlower(int x, int y, int z, int height, Constants::RGBcolor color)
+void BlockComp::generateFlower(int x, int y, int z, int height, Constants::RGBcolor color, Constants::RGBcolor color2)
 {
-	generateStem(x, y, z, height - 2, pConstants->DARK_GREEN);
-	generateRect(x - 3, x + 3, y - 1, y + 1, z + height - 1, z + height - 1, color);
-	generateRect(x - 1, x + 1, y - 3, y + 3, z + height - 1, z + height - 1, color);
-	generateRect(x - 2, x + 2, y - 2, y + 2, z + height - 1, z + height - 1, color);
-	generateRect(x - 1, x + 1, y - 1, y + 1, z + height - 1, z + height, pConstants->YELLOW);
-	//generateBlock(x, y, z + height - 1, pConstants->YELLOW);
+	if (!checkForOccupiedBlocks(x - 3, x + 3, y - 3, y + 3, z + height - 3, z + height + 3))
+	{
+		generateStem(x, y, z, height - 2, pConstants->DARK_GREEN);
+		//generateRect(x - 2, x + 2, y - 2, y + 2, z + height - 1, z + height - 1, color);
+		generateRect(x - 1, x + 1, y + 3, y + 3, z + height, z + height, color);
+		generateRect(x - 3, x - 3, y - 1, y + 1, z + height, z + height, color);
+		generateRect(x - 1, x + 1, y - 3, y - 3, z + height, z + height, color);
+		generateRect(x + 3, x + 3, y - 1, y + 1, z + height, z + height, color);
+		generateRect(x - 1, x + 1, y + 2, y + 2, z + height - 1, z + height - 1, color);
+		generateRect(x - 2, x - 2, y - 1, y + 1, z + height - 1, z + height - 1, color);
+		generateRect(x - 1, x + 1, y - 2, y - 2, z + height - 1, z + height - 1, color);
+		generateRect(x + 2, x + 2, y - 1, y + 1, z + height - 1, z + height - 1, color);
+		generateRect(x - 2, x - 2, y - 2, y - 2, z + height, z + height, color);
+		generateRect(x + 2, x + 2, y + 2, y + 2, z + height, z + height, color);
+		generateRect(x + 2, x + 2, y - 2, y - 2, z + height, z + height, color);
+		generateRect(x - 2, x - 2, y + 2, y + 2, z + height, z + height, color);
+		generateRect(x - 1, x + 1, y - 1, y + 1, z + height, z + height, color2);
+		//generateBlock(x, y, z + height - 1, pConstants->YELLOW);
+	}
 }
 
 void BlockComp::generateFlowerField(int x1, int x2, int y1, int y2, int z, int minHeight, int maxHeight)
@@ -79,9 +108,13 @@ void BlockComp::generateFlowerField(int x1, int x2, int y1, int y2, int z, int m
 	int area = xLength * yLength;
 	for (int i = 0; i < (area >> 10); i++)
 	{
-		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->RED);
-		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->BLUE);
-		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->WHITE);
+		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->YELLOW, pConstants->LIGHT_BLACK);
+		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->RED, pConstants->LIGHT_BLACK);
+		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->RED, pConstants->YELLOW);
+		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->ORANGE, pConstants->YELLOW);
+		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->MAGENTA, pConstants->YELLOW);
+		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->BLUE, pConstants->YELLOW);
+		generateFlower(rand() % xLength + 3 + x1, rand() % yLength + 3 + y1, z, rand() % heightRange + minHeight, pConstants->WHITE, pConstants->YELLOW);
 	}
 }
 void BlockComp::generateTree(int x, int y)
