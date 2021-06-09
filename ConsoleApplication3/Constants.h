@@ -10,15 +10,20 @@ public:
 
 	RGBcolor NONE;
 	RGBcolor BLACK;
+	RGBcolor LIGHT_BLACK;
 	RGBcolor WHITE;
-	RGBcolor RED;
 	RGBcolor GREEN;
 	RGBcolor DARK_GREEN;
 	RGBcolor BLUE;
 	RGBcolor YELLOW;
+	RGBcolor ORANGE;
+	RGBcolor RED;
+	RGBcolor MAGENTA;
 	RGBcolor BROWN;
 	RGBcolor GRAY;
 	RGBcolor LIGHT_BLUE;
+	RGBcolor SKIN_WHITE;
+	RGBcolor LIP_WHITE;
 	
 	Constants();
 	~Constants();
