@@ -50,6 +50,9 @@ int xLocation;
 int yLocation;
 int zLocation;
 
+int adjacentBlockDirection = 1;
+int direction = 1;
+
 const int xCoordinatesSize = 500;
 const int yCoordinatesSize = 500;
 const int zCoordinatesSize = 51;
@@ -86,7 +89,7 @@ void setUp() {
 	blockSlant = 5;
 	xLocation = xBlocks / 2;
 	yLocation = yBlocks / 2;
-	zLocation = 0;//zBlocks / 2;
+	zLocation = 9;//zBlocks / 2;
 	calculateCoordinates();
 	/*pBlockComp->generateBlock(1, 5, 0, pConstants->RED);
 	pBlockComp->generateBlock(8, 5, 0, pConstants->BLACK);
@@ -165,16 +168,51 @@ void draw() {
 	int yBlocksRadius = (height >> blockSize >> 1);
 	int xOffset = (width >> 1);
 	int yOffset = (height >> 1);
+	int yCoordinate;
+	int yReverseCoordinate;
+	int xCoordinate;
+	int xReverseCoordinate;
 	for (int y = yBlocksRadius; y >= -yBlocksRadius; y--)
 	{
+		if (direction == 1)
+		{
+			yCoordinate = adjacentBlockDirection * y + yLocation;
+			yReverseCoordinate = adjacentBlockDirection * y + yLocation;
+		}
+		else
+		{
+			xCoordinate = -adjacentBlockDirection * y + yLocation;
+			xReverseCoordinate = -adjacentBlockDirection * y + yLocation;
+		}
 		for (int x = xBlocksRadius; x >= 0; x--)
 		{
+			if (direction == 1)
+			{
+				xCoordinate = adjacentBlockDirection * x + xLocation;
+				xReverseCoordinate = -adjacentBlockDirection * (x + 1) + xLocation;
+			}
+			else
+			{
+				yCoordinate = adjacentBlockDirection * x + xLocation;
+				yReverseCoordinate = -adjacentBlockDirection * (x + 1) + xLocation;
+			}
 			for (int z = 1; z < 50; z++)
 			{
-				Constants::RGBcolor blockColor = pBlockComp->getBlock(x + xLocation, y + yLocation, z + zLocation);
-				Constants::RGBcolor aboveBlockColor = pBlockComp->getBlock(x + xLocation, y + yLocation, z + zLocation + 1);
-				Constants::RGBcolor frontBlockColor = pBlockComp->getBlock(x + xLocation, y + yLocation - 1, z + zLocation);
-				Constants::RGBcolor sideBlockColor = pBlockComp->getBlock(x + xLocation - 1, y + yLocation, z + zLocation);
+				int zCoordinate = z + zLocation;
+				Constants::RGBcolor blockColor = pBlockComp->getBlock(xCoordinate, yCoordinate, zCoordinate);
+				Constants::RGBcolor aboveBlockColor = pBlockComp->getBlock(xCoordinate, yCoordinate, zCoordinate + 1);
+				Constants::RGBcolor frontBlockColor;
+				Constants::RGBcolor sideBlockColor;
+				if (direction == 1)
+				{
+					frontBlockColor = pBlockComp->getBlock(xCoordinate, yCoordinate - adjacentBlockDirection, zCoordinate);
+					sideBlockColor = pBlockComp->getBlock(xCoordinate - adjacentBlockDirection, yCoordinate, zCoordinate);
+				}
+				else
+				{
+					sideBlockColor = pBlockComp->getBlock(xCoordinate, yCoordinate - adjacentBlockDirection, zCoordinate);
+					frontBlockColor = pBlockComp->getBlock(xCoordinate + adjacentBlockDirection, yCoordinate, zCoordinate);
+				}
 				if (blockColor.green != pConstants->NONE.green)
 				{
 					int inside = xCoordinates[x][y + yBlocksRadius][z + 1];
@@ -215,10 +253,18 @@ void draw() {
 							blockColor, 20);
 					}
 				}
-				blockColor = pBlockComp->getBlock(-x - 1 + xLocation, y + yLocation, z + zLocation);
-				aboveBlockColor = pBlockComp->getBlock(-x - 1 + xLocation, y + yLocation, z + zLocation + 1);
-				frontBlockColor = pBlockComp->getBlock(-x - 1 + xLocation, y + yLocation - 1, z + zLocation);
-				sideBlockColor = pBlockComp->getBlock(-x - 1 + xLocation + 1, y + yLocation, z + zLocation);
+				blockColor = pBlockComp->getBlock(xReverseCoordinate, yReverseCoordinate, zCoordinate);
+				aboveBlockColor = pBlockComp->getBlock(xReverseCoordinate, yReverseCoordinate, zCoordinate + 1);
+				if (direction == 1)
+				{
+					frontBlockColor = pBlockComp->getBlock(xReverseCoordinate, yReverseCoordinate - adjacentBlockDirection, zCoordinate);
+					sideBlockColor = pBlockComp->getBlock(xReverseCoordinate + adjacentBlockDirection, yReverseCoordinate, zCoordinate);
+				}
+				else
+				{
+					sideBlockColor = pBlockComp->getBlock(xReverseCoordinate, yReverseCoordinate + adjacentBlockDirection, zCoordinate);
+					frontBlockColor = pBlockComp->getBlock(xReverseCoordinate + adjacentBlockDirection, yReverseCoordinate, zCoordinate);
+				}
 				if (blockColor.green != pConstants->NONE.green)
 				{
 					int inside = xCoordinates[x][y + yBlocksRadius][z + 1];
@@ -343,14 +389,16 @@ void keyboard() {
 	}
 	if (GetAsyncKeyState(0x44))
 	{
-		zLocation--;
+		//zLocation--;
+		adjacentBlockDirection = -adjacentBlockDirection;
 		while (GetAsyncKeyState(0x44))
 		{
 		}
 	}
 	if (GetAsyncKeyState(0x41))
 	{
-		zLocation++;
+		//zLocation++;
+		direction = -direction;
 		while (GetAsyncKeyState(0x41))
 		{
 		}

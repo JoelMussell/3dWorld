@@ -1,20 +1,20 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ConsoleApplication3.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   BlockGame.cpp
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(277): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(293): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(294): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(302): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(303): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(378): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(379): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(380): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(381): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(388): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(389): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(390): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(391): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(398): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(399): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(400): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(401): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(323): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(339): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(340): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(348): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(349): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(426): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(427): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(428): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(429): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(436): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(437): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(438): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(439): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(446): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(447): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(448): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(449): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   ConsoleApplication3.vcxproj -> C:\Users\Joel M\source\repos\Games\BlockGame\Debug\BlockGame.exe
