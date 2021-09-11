@@ -24,8 +24,7 @@ void enable2D(int width, int height);
 void drawText(float x, float y, std::string text, Constants::RGBcolor squareColor);
 std::string int2str(int x);
 void drawRect(int x1, int y1, int x2, int y2, Constants::RGBcolor squareColor);
-void drawFront(int x1o, int x1i, int y1, int x2o, int x2i, int y2, Constants::RGBcolor squareColor, int colorOffset);
-void drawSide(int x1, int y1t, int y1b, int x2, int y2t, int y2b, Constants::RGBcolor squareColor, int colorOffset);
+void drawSide(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, Constants::RGBcolor squareColor, int colorOffset);
 void calculateCoordinates();
 void keyboard();
 
@@ -53,12 +52,16 @@ int zLocation;
 int adjacentBlockDirection = 1;
 int direction = 1;
 
+int step = 1;//4;
+
 const int xCoordinatesSize = 500;
 const int yCoordinatesSize = 500;
 const int zCoordinatesSize = 51;
 
 int xCoordinates[xCoordinatesSize][yCoordinatesSize][zCoordinatesSize + 1];
 int yCoordinates[xCoordinatesSize][yCoordinatesSize][zCoordinatesSize + 1];
+
+double cameraAngle;
 
 // program entry point
 int main(int argc, char** argv) {
@@ -90,6 +93,7 @@ void setUp() {
 	xLocation = xBlocks / 2;
 	yLocation = yBlocks / 2;
 	zLocation = 9;//zBlocks / 2;
+	cameraAngle = .002;
 	calculateCoordinates();
 	/*pBlockComp->generateBlock(1, 5, 0, pConstants->RED);
 	pBlockComp->generateBlock(8, 5, 0, pConstants->BLACK);
@@ -115,7 +119,7 @@ void setUp() {
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 2, pConstants->GREEN);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 3, pConstants->BLUE);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 6, pConstants->BLUE);
-	pBlockComp->generateRect(xBlocks / 2 - 20, xBlocks / 2 + 20, yBlocks / 2 - 20, yBlocks / 2 + 20, 11, 25, pConstants->NONE);
+	pBlockComp->generateRect(xBlocks / 2 - 20, xBlocks / 2 + 20, yBlocks / 2 - 19, yBlocks / 2 + 20, 11, 25, pConstants->NONE);
 
 	pBlockComp->generateRect(xBlocks / 2 - 2, xBlocks / 2 - 1, yBlocks / 2 - 1, yBlocks / 2 + 1, 14, 14, pConstants->BLACK);
 	pBlockComp->generateRect(xBlocks / 2 + 1, xBlocks / 2 + 2, yBlocks / 2 - 1, yBlocks / 2 + 1, 14, 14, pConstants->BLACK);
@@ -145,6 +149,12 @@ void setUp() {
 	pBlockComp->generateBlock(xBlocks / 2 - 1, yBlocks / 2 - 2, 27, pConstants->BLACK);
 	pBlockComp->generateBlock(xBlocks / 2 + 1, yBlocks / 2 - 2, 27, pConstants->BLACK);
 	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2 - 3, 26, pConstants->LIP_WHITE);
+	pBlockComp->generateRect(xBlocks / 2 - 20, xBlocks / 2 + 19, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->RED);
+	pBlockComp->generateRect(xBlocks / 2 - 16, xBlocks / 2 - 13, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xBlocks / 2 - 8, xBlocks / 2 - 5, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xBlocks / 2, xBlocks / 2 + 3, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xBlocks / 2 + 8, xBlocks / 2 + 11, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xBlocks / 2 + 16, xBlocks / 2 + 19, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
 }
 
 void update(int value) {
@@ -215,41 +225,61 @@ void draw() {
 				}
 				if (blockColor.green != pConstants->NONE.green)
 				{
-					int inside = xCoordinates[x][y + yBlocksRadius][z + 1];
-					int outside = xCoordinates[x + 1][y + yBlocksRadius][z + 1];
-					int front = yCoordinates[x][y + yBlocksRadius][z + 1];
-					int back = yCoordinates[x][y + yBlocksRadius + 1][z + 1];
-					int bottomInside = xCoordinates[x][y + yBlocksRadius][z];
-					int bottomOutside = xCoordinates[x + 1][y + yBlocksRadius][z];
-					int bottomFront = yCoordinates[x][y + yBlocksRadius][z];
-					int bottomBack = yCoordinates[x][y + yBlocksRadius + 1][z];
+					int insideFrontX = xCoordinates[x][y + yBlocksRadius][z + 1];
+					int insideFrontY = yCoordinates[x][y + yBlocksRadius][z + 1];
+
+					int insideBackX = xCoordinates[x][y + yBlocksRadius + 1][z + 1];
+					int insideBackY = yCoordinates[x][y + yBlocksRadius + 1][z + 1];
+
+					int outsideBackX = xCoordinates[x + 1][y + yBlocksRadius + 1][z + 1];
+					int outsideBackY = yCoordinates[x + 1][y + yBlocksRadius + 1][z + 1];
+
+					int outsideFrontX = xCoordinates[x + 1][y + yBlocksRadius][z + 1];
+					int outsideFrontY = yCoordinates[x + 1][y + yBlocksRadius][z + 1];
+
+					int bottomX = xCoordinates[x][y + yBlocksRadius][z];
+					int bottomY = yCoordinates[x][y + yBlocksRadius][z];
+
+					int bottomOutsideX = xCoordinates[x + 1][y + yBlocksRadius][z];
+					int bottomOutsideY = yCoordinates[x + 1][y + yBlocksRadius][z];
+
+					int bottomBackX = xCoordinates[x][y + yBlocksRadius + 1][z];
+					int bottomBackY = yCoordinates[x][y + yBlocksRadius + 1][z];
 
 					if (aboveBlockColor.green == pConstants->NONE.green)
 					{
-						drawRect(xOffset + inside,
-							yOffset + back,
-							xOffset + outside,
-							yOffset + front,
-							blockColor);
+						drawSide(xOffset + insideFrontX,
+							yOffset + insideFrontY,
+							xOffset + insideBackX,
+							yOffset + insideBackY,
+							xOffset + outsideBackX,
+							yOffset + outsideBackY,
+							xOffset + outsideFrontX,
+							yOffset + outsideFrontY,
+							blockColor, 0);
 					}
 					if (frontBlockColor.green == pConstants->NONE.green)
 					{
-						drawFront(xOffset + outside,
-							xOffset + inside,
-							yOffset + front,
-							xOffset + bottomOutside,
-							xOffset + bottomInside,
-							yOffset + bottomFront,
+						drawSide(xOffset + outsideFrontX,
+							yOffset + outsideFrontY,
+							xOffset + insideFrontX,
+							yOffset + insideFrontY,
+							xOffset + bottomX,
+							yOffset + bottomY,
+							xOffset + bottomOutsideX,
+							yOffset + bottomOutsideY,
 							blockColor, 10);
 					}
 					if (sideBlockColor.green == pConstants->NONE.green)
 					{
-						drawSide(xOffset + inside,
-							yOffset + back,
-							yOffset + front,
-							xOffset + bottomInside,
-							yOffset + bottomBack,
-							yOffset + bottomFront,
+						drawSide(xOffset + insideBackX,
+							yOffset + insideBackY,
+							xOffset + insideFrontX,
+							yOffset + insideFrontY,
+							xOffset + bottomX,
+							yOffset + bottomY,
+							xOffset + bottomBackX,
+							yOffset + bottomBackY,
 							blockColor, 20);
 					}
 				}
@@ -267,41 +297,61 @@ void draw() {
 				}
 				if (blockColor.green != pConstants->NONE.green)
 				{
-					int inside = xCoordinates[x][y + yBlocksRadius][z + 1];
-					int outside = xCoordinates[x + 1][y + yBlocksRadius][z + 1];
-					int front = yCoordinates[x][y + yBlocksRadius][z + 1];
-					int back = yCoordinates[x][y + yBlocksRadius + 1][z + 1];
-					int bottomInside = xCoordinates[x][y + yBlocksRadius][z];
-					int bottomOutside = xCoordinates[x + 1][y + yBlocksRadius][z];
-					int bottomFront = yCoordinates[x][y + yBlocksRadius][z];
-					int bottomBack = yCoordinates[x][y + yBlocksRadius + 1][z];
+					int insideFrontX = xCoordinates[x][y + yBlocksRadius][z + 1];
+					int insideFrontY = yCoordinates[x][y + yBlocksRadius][z + 1];
 
+					int insideBackX = xCoordinates[x][y + yBlocksRadius + 1][z + 1];
+					int insideBackY = yCoordinates[x][y + yBlocksRadius + 1][z + 1];
+
+					int outsideBackX = xCoordinates[x + 1][y + yBlocksRadius + 1][z + 1];
+					int outsideBackY = yCoordinates[x + 1][y + yBlocksRadius + 1][z + 1];
+
+					int outsideFrontX = xCoordinates[x + 1][y + yBlocksRadius][z + 1];
+					int outsideFrontY = yCoordinates[x + 1][y + yBlocksRadius][z + 1];
+
+					int bottomX = xCoordinates[x][y + yBlocksRadius][z];
+					int bottomY = yCoordinates[x][y + yBlocksRadius][z];
+
+					int bottomOutsideX = xCoordinates[x + 1][y + yBlocksRadius][z];
+					int bottomOutsideY = yCoordinates[x + 1][y + yBlocksRadius][z];
+
+					int bottomBackX = xCoordinates[x][y + yBlocksRadius + 1][z];
+					int bottomBackY = yCoordinates[x][y + yBlocksRadius + 1][z];
+					/**/
 					if (aboveBlockColor.green == pConstants->NONE.green)
 					{
-						drawRect(xOffset - inside,
-							yOffset + back,
-							xOffset - outside,
-							yOffset + front,
-							blockColor);
+						drawSide(xOffset - insideFrontX,
+							yOffset + insideFrontY,
+							xOffset - insideBackX,
+							yOffset + insideBackY,
+							xOffset - outsideBackX,
+							yOffset + outsideBackY,
+							xOffset - outsideFrontX,
+							yOffset + outsideFrontY,
+							blockColor, 0);
 					}
 					if (frontBlockColor.green == pConstants->NONE.green)
 					{
-						drawFront(xOffset - outside,
-							xOffset - inside,
-							yOffset + front,
-							xOffset - bottomOutside,
-							xOffset - bottomInside,
-							yOffset + bottomFront,
+						drawSide(xOffset - outsideFrontX,
+							yOffset + outsideFrontY,
+							xOffset - insideFrontX,
+							yOffset + insideFrontY,
+							xOffset - bottomX,
+							yOffset + bottomY,
+							xOffset - bottomOutsideX,
+							yOffset + bottomOutsideY,
 							blockColor, 10);
 					}
 					if (sideBlockColor.green == pConstants->NONE.green)
 					{
-						drawSide(xOffset - inside,
-							yOffset + back,
-							yOffset + front,
-							xOffset - bottomInside,
-							yOffset + bottomBack,
-							yOffset + bottomFront,
+						drawSide(xOffset - insideBackX,
+							yOffset + insideBackY,
+							xOffset - insideFrontX,
+							yOffset + insideFrontY,
+							xOffset - bottomX,
+							yOffset + bottomY,
+							xOffset - bottomBackX,
+							yOffset + bottomBackY,
 							blockColor, 20);
 					}
 				}
@@ -315,8 +365,13 @@ void draw() {
 
 void calculateCoordinates()
 {
+	double cameraX = 0;
+	double cameraY = 10.0;
+	double cameraZ = -70.0;
+
 	int xBlocksRadius = (width >> blockSize >> 1);
 	int yBlocksRadius = (height >> blockSize >> 1);
+	double yBlocksRadius2 = (height >> blockSize >> 1);
 	int xOffset = (width >> 1);
 	int yOffset = (height >> 1);
 	
@@ -328,27 +383,19 @@ void calculateCoordinates()
 		{
 			for (int z = 0; z < 51; z++)
 			{
-				int altitude = z;
-				int altitudeShift = (blockSlant + blockSlant - blockSize - blockSize + 7);
-				int xHeightAdjustment = (altitude * x) << 7 >> altitudeShift;
-				int xHeightAdjustment1 = (altitude * (x + 1)) << 7 >> altitudeShift;
-				int yHeightAdjustment = (altitude * y) << 7 >> altitudeShift;
-				int yHeightAdjustment1 = (altitude * (y + 1)) << 7 >> altitudeShift;
+				//complex view
+				double a = y + cameraY + yBlocksRadius;
+				xCoordinates[x][y + yBlocksRadius][z + 1] = atan((x + cameraX) / (a * 1024)) * 256 * 1024;
+				yCoordinates[x][y + yBlocksRadius][z + 1] = atan(((z + cameraZ) / (a * 1024)) + cameraAngle) * 256 * 1024;
+
+				//standard view
+				/*int altitudeShift = (blockSlant + blockSlant - blockSize - blockSize + 7);
+				int xHeightAdjustment = (z * x) << 7 >> altitudeShift;
+				int yHeightAdjustment = (z * y) << 7 >> altitudeShift;
 				int inside = (x << blockSize) + xHeightAdjustment;
-				int outside = ((x + 1) << blockSize) + xHeightAdjustment1;
-				int front = (y << blockSize) + ((altitude << blockSize) * slant) + yHeightAdjustment;
-				int back = ((y + 1) << blockSize) + ((altitude << blockSize) * slant) + yHeightAdjustment1;
-				altitude = z - 1;
-				int xHeightAdjustment2 = (altitude * x) << 7 >> altitudeShift;
-				int xHeightAdjustment3 = (altitude * (x + 1)) << 7 >> altitudeShift;
-				int yHeightAdjustment2 = (altitude * y) << 7 >> altitudeShift;
-				int yHeightAdjustment3 = (altitude * (y + 1)) << 7 >> altitudeShift;
-				int bottomInside = (x << blockSize) + xHeightAdjustment2;
-				int bottomOutside = ((x + 1) << blockSize) + xHeightAdjustment3;
-				int bottomFront = (y << blockSize) + ((altitude << blockSize) * slant) + yHeightAdjustment2;
-				int bottomBack = ((y + 1) << blockSize) + ((altitude << blockSize) * slant) + yHeightAdjustment3;
+				int front = (y << blockSize) + ((z << blockSize) * slant) + yHeightAdjustment;
 				xCoordinates[x][y + yBlocksRadius][z + 1] = inside;
-				yCoordinates[x][y + yBlocksRadius][z + 1] = front;
+				yCoordinates[x][y + yBlocksRadius][z + 1] = front;*/
 			}
 		}
 	}
@@ -357,19 +404,19 @@ void calculateCoordinates()
 void keyboard() {
 	if (GetAsyncKeyState(VK_UP))
 	{
-		yLocation = yLocation + 4;
+		yLocation = yLocation + step;
 	}
 	if (GetAsyncKeyState(VK_DOWN))
 	{
-		yLocation = yLocation - 4;
+		yLocation = yLocation - step;
 	}
 	if (GetAsyncKeyState(VK_RIGHT))
 	{
-		xLocation = xLocation + 4;
+		xLocation = xLocation + step;
 	}
 	if (GetAsyncKeyState(VK_LEFT))
 	{
-		xLocation = xLocation - 4;
+		xLocation = xLocation - step;
 	}
 	if (GetAsyncKeyState(VK_RSHIFT))
 	{
@@ -389,7 +436,6 @@ void keyboard() {
 	}
 	if (GetAsyncKeyState(0x44))
 	{
-		//zLocation--;
 		adjacentBlockDirection = -adjacentBlockDirection;
 		while (GetAsyncKeyState(0x44))
 		{
@@ -397,9 +443,24 @@ void keyboard() {
 	}
 	if (GetAsyncKeyState(0x41))
 	{
-		//zLocation++;
 		direction = -direction;
 		while (GetAsyncKeyState(0x41))
+		{
+		}
+	}
+	if (GetAsyncKeyState(0x53))
+	{
+		cameraAngle = cameraAngle + .0005;
+		calculateCoordinates();
+		while (GetAsyncKeyState(0x53))
+		{
+		}
+	}
+	if (GetAsyncKeyState(0x57))
+	{
+		cameraAngle = cameraAngle - .0005;
+		calculateCoordinates();
+		while (GetAsyncKeyState(0x57))
 		{
 		}
 	}
@@ -430,23 +491,13 @@ void drawRect(int x1, int y1, int x2, int y2, Constants::RGBcolor squareColor) {
 	glEnd();
 }
 
-void drawFront(int x1o, int x1i, int y1, int x2o, int x2i, int y2, Constants::RGBcolor squareColor, int colorOffset) {
+void drawSide(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, Constants::RGBcolor squareColor, int colorOffset) {
 		glBegin(GL_QUADS);
 		glColor3b(squareColor.red - colorOffset, squareColor.green - colorOffset, squareColor.blue - colorOffset);
-		glVertex2f(x1o, y1);
-		glVertex2f(x1i, y1);
-		glVertex2f(x2i, y2);
-		glVertex2f(x2o, y2);
-		glEnd();
-}
-
-void drawSide(int x1, int y1t, int y1b, int x2, int y2t, int y2b, Constants::RGBcolor squareColor, int colorOffset) {
-		glBegin(GL_QUADS);
-		glColor3b(squareColor.red - colorOffset, squareColor.green - colorOffset, squareColor.blue - colorOffset);
-		glVertex2f(x1, y1t);
-		glVertex2f(x1, y1b);
-		glVertex2f(x2, y2b);
-		glVertex2f(x2, y2t);
+		glVertex2f(x1, y1);
+		glVertex2f(x2, y2);
+		glVertex2f(x3, y3);
+		glVertex2f(x4, y4);
 		glEnd();
 }
 
