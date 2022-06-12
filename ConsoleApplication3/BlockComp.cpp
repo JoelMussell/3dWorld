@@ -57,6 +57,38 @@ bool BlockComp::checkForOccupiedBlocks(int x1, int x2, int y1, int y2, int z1, i
 	return false;
 }
 
+void BlockComp::generatePerson(int x, int y, int z)
+{
+	generateRect(x / 2 - 2, x / 2 - 1, y / 2 - 1, y / 2 + 1, 14, 14, pConstants->BLACK);
+	generateRect(x / 2 + 1, x / 2 + 2, y / 2 - 1, y / 2 + 1, 14, 14, pConstants->BLACK);
+	generateRect(x / 2 - 2, x / 2 - 1, y / 2, y / 2 + 1, 15, 17, pConstants->BLUE);
+	generateRect(x / 2 + 1, x / 2 + 2, y / 2, y / 2 + 1, 15, 18, pConstants->BLUE);
+	generateRect(x / 2 - 2, x / 2 + 2, y / 2 - 1, y / 2 + 2, 18, 18, pConstants->BLUE);
+	generateRect(x / 2 - 2, x / 2 + 2, y / 2 - 1, y / 2 + 2, 19, 22, pConstants->RED);
+	generateRect(x / 2 - 3, x / 2 - 3, y / 2 - 4, y / 2 + 1, 18, 18, pConstants->BROWN);
+	generateRect(x / 2 - 3, x / 2 - 3, y / 2 - 5, y / 2 - 5, 17, 19, pConstants->GRAY);
+	generateBlock(x / 2 - 3, y / 2 - 4, 16, pConstants->GRAY);
+	generateBlock(x / 2 - 3, y / 2 - 4, 20, pConstants->GRAY);
+	generateRect(x / 2 + 3, x / 2 + 3, y / 2, y / 2, 19, 22, pConstants->RED);
+	generateBlock(x / 2 + 3, y / 2, 18, pConstants->SKIN_WHITE);
+	generateRect(x / 2 - 3, x / 2 - 3, y / 2, y / 2, 19, 22, pConstants->RED);
+	generateBlock(x / 2 - 3, y / 2, 18, pConstants->SKIN_WHITE);
+	generateRect(x / 2, x / 2, y / 2, y / 2, 23, 23, pConstants->SKIN_WHITE);
+	generateRect(x / 2 - 1, x / 2 + 1, y / 2 - 2, y / 2 + 2, 24, 24, pConstants->SKIN_WHITE);
+	generateRect(x / 2 - 2, x / 2 + 2, y / 2 - 1, y / 2 + 1, 24, 24, pConstants->SKIN_WHITE);
+	generateRect(x / 2 - 2, x / 2 + 2, y / 2 - 2, y / 2 + 2, 25, 27, pConstants->SKIN_WHITE);
+	generateRect(x / 2 - 2, x / 2 + 2, y / 2 + 1, y / 2 + 2, 25, 26, pConstants->BROWN);
+	generateRect(x / 2 - 2, x / 2 + 2, y / 2, y / 2 + 2, 27, 28, pConstants->BROWN);
+	generateRect(x / 2 - 2, x / 2 + 2, y / 2 - 2, y / 2 + 2, 28, 28, pConstants->BROWN);
+	generateRect(x / 2 - 1, x / 2 + 1, y / 2 - 2, y / 2 + 2, 29, 29, pConstants->BROWN);
+	generateRect(x / 2 - 2, x / 2 + 2, y / 2 - 1, y / 2 + 1, 29, 29, pConstants->BROWN);
+	generateRect(x / 2 - 1, x / 2 + 1, y / 2 - 2, y / 2 - 2, 28, 28, pConstants->SKIN_WHITE);
+	generateRect(x / 2 - 1, x / 2 + 1, y / 2 - 2, y / 2 - 2, 25, 25, pConstants->BLACK);
+	generateBlock(x / 2 - 1, y / 2 - 2, 27, pConstants->BLACK);
+	generateBlock(x / 2 + 1, y / 2 - 2, 27, pConstants->BLACK);
+	generateBlock(x / 2, y / 2 - 3, 26, pConstants->LIP_WHITE);
+}
+
 void BlockComp::generateStem(int x, int y, int z, int height, Constants::RGBcolor color)
 {
 	generateRect(x, x, y, y, z, z + height, color);
