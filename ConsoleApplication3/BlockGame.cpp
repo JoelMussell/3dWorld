@@ -99,11 +99,6 @@ void setUp() {
 	pBlockComp->generateRect(0, 1023, 0, 1023, 0, 4, pConstants->GRAY);
 	pBlockComp->generateRect(0, 1023, 0, 1023, 5, 9, pConstants->BROWN);
 	pBlockComp->generateRect(0, 1023, 0, 1023, 10, 10, pConstants->GREEN);
-	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 5, pConstants->RED);
-	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 1, pConstants->RED);
-	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 2, pConstants->GREEN);
-	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 3, pConstants->BLUE);
-	pBlockComp->generateBlock(xBlocks / 2, yBlocks / 2, 6, pConstants->BLUE);
 	pBlockComp->generateRect(xBlocks / 2 - 20, xBlocks / 2 + 20, yBlocks / 2 - 19, yBlocks / 2 + 20, 11, 25, pConstants->NONE);
 	
 	pBlockComp->generatePerson(xBlocks, yBlocks, 14);
@@ -133,12 +128,12 @@ void draw() {
 	glLoadIdentity();
 
 	// draw squares
-	int xBlocksRadius = (width >> blockSize >> 1);
+	int xBlocksRadius = (width >> blockSize)*.85;
 	int yBlocksRadius = (height >> blockSize >> 1);
-	int yBlocksRadiusFront = (height >> blockSize >> 1) * .75;
-	int yBlocksRadiusBack = (height >> blockSize >> 1) * 1.5;
+	int yBlocksRadiusFront = (height >> blockSize) * .15;
+	int yBlocksRadiusBack = (height >> blockSize) * .75;
 	int xOffset = (width >> 1);
-	int yOffset = (height >> 1);
+	int yOffset = height*.05;
 	int yCoordinate;
 	int yReverseCoordinate;
 	int xCoordinate;
@@ -155,7 +150,7 @@ void draw() {
 			xCoordinate = -adjacentBlockDirection * y + yLocation;
 			xReverseCoordinate = -adjacentBlockDirection * y + yLocation;
 		}
-		for (int x = xBlocksRadius; x >= 0; x--)
+		for (int x = xBlocksRadius + (y * 2.5); x >= 0; x--)
 		{
 			if (direction == 1)
 			{
@@ -329,19 +324,19 @@ void calculateCoordinates()
 	double cameraX = 0;
 	double cameraY = 10.0;
 	double cameraZ = -70.0;
-
-	int xBlocksRadius = (width >> blockSize >> 1);
+	
+	int xBlocksRadius = (width >> blockSize)*.85;
 	int yBlocksRadius = (height >> blockSize >> 1);
-	int yBlocksRadiusFront = (height >> blockSize >> 1) * .75;
-	int yBlocksRadiusBack = (height >> blockSize >> 1) * 1.5;
+	int yBlocksRadiusFront = (height >> blockSize) * .15;
+	int yBlocksRadiusBack = (height >> blockSize) * .75;
 	int xOffset = (width >> 1);
-	int yOffset = (height >> 1);
+	int yOffset = height*.05;
 	
 	float slant = 1.8;
 
 	for (int y = yBlocksRadiusBack +1; y >= -yBlocksRadius; y--)
 	{
-		for (int x = xBlocksRadius + 1; x >= 0; x--)
+		for (int x = xBlocksRadius + (y * 2.5) + 1; x >= 0; x--)
 		{
 			for (int z = 0; z < 51; z++)
 			{
