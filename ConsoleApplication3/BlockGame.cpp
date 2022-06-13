@@ -93,22 +93,22 @@ void setUp() {
 	xLocation = xBlocks / 2;
 	yLocation = yBlocks / 2;
 	zLocation = 9;//zBlocks / 2;
-	cameraAngle = .0015;
+	cameraAngle = .0005;
 	calculateCoordinates();
 	pBlockComp->generateFlowerField(0, 1023, 0, 1023, 11, 9, 13);
 	pBlockComp->generateRect(0, 1023, 0, 1023, 0, 4, pConstants->GRAY);
 	pBlockComp->generateRect(0, 1023, 0, 1023, 5, 9, pConstants->BROWN);
 	pBlockComp->generateRect(0, 1023, 0, 1023, 10, 10, pConstants->GREEN);
-	pBlockComp->generateRect(xBlocks / 2 - 20, xBlocks / 2 + 20, yBlocks / 2 - 19, yBlocks / 2 + 20, 11, 25, pConstants->NONE);
+	pBlockComp->generateRect(xLocation - 20, xLocation + 20, yLocation - 19, yLocation + 20, 11, 25, pConstants->NONE);
 	
-	pBlockComp->generatePerson(xBlocks, yBlocks, 14);
+	pBlockComp->generatePerson(xLocation, yLocation, 14);
 
-	pBlockComp->generateRect(xBlocks / 2 - 20, xBlocks / 2 + 19, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->RED);
-	pBlockComp->generateRect(xBlocks / 2 - 16, xBlocks / 2 - 13, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
-	pBlockComp->generateRect(xBlocks / 2 - 8, xBlocks / 2 - 5, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
-	pBlockComp->generateRect(xBlocks / 2, xBlocks / 2 + 3, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
-	pBlockComp->generateRect(xBlocks / 2 + 8, xBlocks / 2 + 11, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
-	pBlockComp->generateRect(xBlocks / 2 + 16, xBlocks / 2 + 19, yBlocks / 2 - 20, yBlocks / 2 + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xLocation - 20, xLocation + 19, yLocation - 20, yLocation + 20, 10, 10, pConstants->RED);
+	pBlockComp->generateRect(xLocation - 16, xLocation - 13, yLocation - 20, yLocation + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xLocation - 8, xLocation - 5, yLocation - 20, yLocation + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xLocation, xLocation + 3, yLocation - 20, yLocation + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xLocation + 8, xLocation + 11, yLocation - 20, yLocation + 20, 10, 10, pConstants->BLACK);
+	pBlockComp->generateRect(xLocation + 16, xLocation + 19, yLocation - 20, yLocation + 20, 10, 10, pConstants->BLACK);
 }
 
 void update(int value) {
@@ -132,8 +132,9 @@ void draw() {
 	int yBlocksRadius = (height >> blockSize >> 1);
 	int yBlocksRadiusFront = (height >> blockSize) * .15;
 	int yBlocksRadiusBack = (height >> blockSize) * .75;
+	double xBlockSlant = 2.5;
 	int xOffset = (width >> 1);
-	int yOffset = height*.05;
+	int yOffset = 500;// height*.05;
 	int yCoordinate;
 	int yReverseCoordinate;
 	int xCoordinate;
@@ -150,7 +151,7 @@ void draw() {
 			xCoordinate = -adjacentBlockDirection * y + yLocation;
 			xReverseCoordinate = -adjacentBlockDirection * y + yLocation;
 		}
-		for (int x = xBlocksRadius + (y * 2.5); x >= 0; x--)
+		for (int x = xBlocksRadius + (y * xBlockSlant); x >= 0; x--)
 		{
 			if (direction == 1)
 			{
@@ -342,8 +343,8 @@ void calculateCoordinates()
 			{
 				//complex view
 				double a = y + cameraY + yBlocksRadius;
-				xCoordinates[x][y + yBlocksRadius][z + 1] = atan((x + cameraX) / (a * 1024)) * 256 * 1024;
-				yCoordinates[x][y + yBlocksRadius][z + 1] = atan(((z + cameraZ) / (a * 1024)) + cameraAngle) * 256 * 1024;
+				xCoordinates[x][y + yBlocksRadius][z + 1] = atan((x + cameraX) / (a * 1024)) * 512 * 1024;
+				yCoordinates[x][y + yBlocksRadius][z + 1] = atan(((z + cameraZ) / (a * 1024)) + cameraAngle) * 512 * 1024;
 
 				//standard view
 				/*int altitudeShift = (blockSlant + blockSlant - blockSize - blockSize + 7);

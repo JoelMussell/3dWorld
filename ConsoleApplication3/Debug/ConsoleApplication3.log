@@ -3,24 +3,23 @@
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(131): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(133): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(134): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(136): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(153): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(328): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(330): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(154): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(329): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(331): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(333): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(335): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(339): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(345): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(332): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(334): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(336): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(340): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(346): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(436): warning C4244: 'argument': conversion from 'short' to 'GLbyte', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(443): warning C4244: 'argument': conversion from 'short' to 'GLbyte', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(444): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(347): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(437): warning C4244: 'argument': conversion from 'short' to 'GLbyte', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(444): warning C4244: 'argument': conversion from 'short' to 'GLbyte', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(445): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(446): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(447): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(454): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(448): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(455): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(456): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(457): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\joel m\source\repos\games\blockgame\consoleapplication3\blockgame.cpp(458): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   ConsoleApplication3.vcxproj -> C:\Users\Joel M\source\repos\Games\BlockGame\Debug\BlockGame.exe
