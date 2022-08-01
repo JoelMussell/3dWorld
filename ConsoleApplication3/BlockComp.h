@@ -19,7 +19,7 @@ public:
 	void generateRect(int x1, int x2, int y1, int y2, int z1, int z2, Constants::RGBcolor color);
 	void generateBlock(int x, int y, int z, Constants::RGBcolor color);
 	bool checkForOccupiedBlocks(int x1, int x2, int y1, int y2, int z1, int z2);
-	void generatePerson(int x, int y, int z);
+	void generatePerson(int x, int y, int z, Constants::RGBcolor skinTone, Constants::RGBcolor noseSkinTone, Constants::RGBcolor hairColor, int hairLength, Constants::RGBcolor shirtColor, Constants::RGBcolor pantsColor);
 	void generateStem(int x, int y, int z, int height, Constants::RGBcolor color);
 	void generateGrassField(int x1, int x2, int y1, int y2, int z, int maxHeight);
 	void generateFlower(int x, int y, int z, int height, Constants::RGBcolor color, Constants::RGBcolor color2);

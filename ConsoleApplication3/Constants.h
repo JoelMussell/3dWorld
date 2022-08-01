@@ -10,11 +10,13 @@ public:
 
 	RGBcolor NONE;
 	RGBcolor BLACK;
+	RGBcolor LIGHTISH_BLACK;
 	RGBcolor LIGHT_BLACK;
 	RGBcolor WHITE;
 	RGBcolor GREEN;
 	RGBcolor DARK_GREEN;
 	RGBcolor BLUE;
+	RGBcolor DARK_BLUE;
 	RGBcolor YELLOW;
 	RGBcolor ORANGE;
 	RGBcolor RED;
@@ -23,7 +25,9 @@ public:
 	RGBcolor GRAY;
 	RGBcolor LIGHT_BLUE;
 	RGBcolor SKIN_WHITE;
-	RGBcolor LIP_WHITE;
+	RGBcolor NOSE_WHITE;
+	RGBcolor SKIN_EAST_ASIAN;
+	RGBcolor NOSE_EAST_ASIAN;
 	
 	Constants();
 	~Constants();

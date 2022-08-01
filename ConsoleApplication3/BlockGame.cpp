@@ -96,12 +96,13 @@ void setUp() {
 	cameraAngle = .0005;
 	calculateCoordinates();
 	pBlockComp->generateFlowerField(0, 1023, 0, 1023, 11, 9, 13);
-	pBlockComp->generateRect(0, 1023, 0, 1023, 0, 4, pConstants->GRAY);
+	/*pBlockComp->generateRect(0, 1023, 0, 1023, 0, 4, pConstants->GRAY);
 	pBlockComp->generateRect(0, 1023, 0, 1023, 5, 9, pConstants->BROWN);
-	pBlockComp->generateRect(0, 1023, 0, 1023, 10, 10, pConstants->GREEN);
+	pBlockComp->generateRect(0, 1023, 0, 1023, 10, 10, pConstants->GREEN);*/
 	pBlockComp->generateRect(xLocation - 20, xLocation + 20, yLocation - 19, yLocation + 20, 11, 25, pConstants->NONE);
 	
-	pBlockComp->generatePerson(xLocation, yLocation, 14);
+	pBlockComp->generatePerson(xLocation, yLocation, 14, pConstants->SKIN_WHITE, pConstants->NOSE_WHITE, pConstants->BROWN, 0, pConstants->BLUE, pConstants->LIGHT_BLACK);
+	pBlockComp->generatePerson(xLocation + 10, yLocation, 14, pConstants->SKIN_EAST_ASIAN, pConstants->NOSE_EAST_ASIAN, pConstants->LIGHTISH_BLACK, 5, pConstants->RED, pConstants->DARK_BLUE);
 
 	pBlockComp->generateRect(xLocation - 20, xLocation + 19, yLocation - 20, yLocation + 20, 10, 10, pConstants->RED);
 	pBlockComp->generateRect(xLocation - 16, xLocation - 13, yLocation - 20, yLocation + 20, 10, 10, pConstants->BLACK);

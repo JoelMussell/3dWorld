@@ -57,36 +57,45 @@ bool BlockComp::checkForOccupiedBlocks(int x1, int x2, int y1, int y2, int z1, i
 	return false;
 }
 
-void BlockComp::generatePerson(int x, int y, int z)
+void BlockComp::generatePerson(int x, int y, int z, Constants::RGBcolor skinTone, Constants::RGBcolor noseSkinTone, Constants::RGBcolor hairColor, int hairLength, Constants::RGBcolor shirtColor, Constants::RGBcolor pantsColor)
 {
-	generateRect(x - 2, x - 1, y - 1, y + 1, 14, 14, pConstants->BLACK);
-	generateRect(x + 1, x + 2, y - 1, y + 1, 14, 14, pConstants->BLACK);
-	generateRect(x - 2, x - 1, y, y + 1, 15, 17, pConstants->BLUE);
-	generateRect(x + 1, x + 2, y, y + 1, 15, 18, pConstants->BLUE);
-	generateRect(x - 2, x + 2, y - 1, y + 2, 18, 18, pConstants->BLUE);
-	generateRect(x - 2, x + 2, y - 1, y + 2, 19, 22, pConstants->RED);
-	generateRect(x - 3, x - 3, y - 4, y + 1, 18, 18, pConstants->BROWN);
-	generateRect(x - 3, x - 3, y - 5, y - 5, 17, 19, pConstants->GRAY);
-	generateBlock(x - 3, y - 4, 16, pConstants->GRAY);
-	generateBlock(x - 3, y - 4, 20, pConstants->GRAY);
-	generateRect(x + 3, x + 3, y, y, 19, 22, pConstants->RED);
-	generateBlock(x + 3, y, 18, pConstants->SKIN_WHITE);
-	generateRect(x - 3, x - 3, y, y, 19, 22, pConstants->RED);
-	generateBlock(x - 3, y, 18, pConstants->SKIN_WHITE);
-	generateRect(x, x, y, y, 23, 23, pConstants->SKIN_WHITE);
-	generateRect(x - 1, x + 1, y - 2, y + 2, 24, 24, pConstants->SKIN_WHITE);
-	generateRect(x - 2, x + 2, y - 1, y + 1, 24, 24, pConstants->SKIN_WHITE);
-	generateRect(x - 2, x + 2, y - 2, y + 2, 25, 27, pConstants->SKIN_WHITE);
-	generateRect(x - 2, x + 2, y + 1, y + 2, 25, 26, pConstants->BROWN);
-	generateRect(x - 2, x + 2, y, y + 2, 27, 28, pConstants->BROWN);
-	generateRect(x - 2, x + 2, y - 2, y + 2, 28, 28, pConstants->BROWN);
-	generateRect(x - 1, x + 1, y - 2, y + 2, 29, 29, pConstants->BROWN);
-	generateRect(x - 2, x + 2, y - 1, y + 1, 29, 29, pConstants->BROWN);
-	generateRect(x - 1, x + 1, y - 2, y - 2, 28, 28, pConstants->SKIN_WHITE);
-	generateRect(x - 1, x + 1, y - 2, y - 2, 25, 25, pConstants->BLACK);
-	generateBlock(x - 1, y - 2, 27, pConstants->BLACK);
-	generateBlock(x + 1, y - 2, 27, pConstants->BLACK);
-	generateBlock(x, y - 3, 26, pConstants->LIP_WHITE);
+	generateRect(x, x, y, y, z + 9, z + 9, skinTone);
+	generateRect(x - 1, x + 1, y - 2, y + 2, z + 10, z + 10, skinTone);
+	generateRect(x - 2, x + 2, y - 1, y + 1, z + 10, z + 10, skinTone);
+	generateRect(x - 2, x + 2, y - 2, y + 2, z + 11, z + 13, skinTone);
+	generateRect(x - 2, x + 2, y + 1, y + 2, z + 11, z + 12, hairColor);
+	generateRect(x - 2, x + 2, y, y + 2, z + 13, z + 14, hairColor);
+	generateRect(x - 2, x + 2, y - 2, y + 2, z + 14, z + 14, hairColor);
+	generateRect(x - 1, x + 1, y - 2, y + 2, z + 15, z + 15, hairColor);
+	generateRect(x - 2, x + 2, y - 1, y + 1, z + 15, z + 15, hairColor);
+	if (hairLength > 0)
+	{
+		generateRect(x - 1, x + 1, y + 3, y + 3, z + 11 - hairLength, 28, hairColor);
+		generateRect(x - 2, x + 2, y + 3, y + 3, z + 11 - hairLength, 27, hairColor);
+		generateRect(x - 3, x - 3, y - 1, y + 1, z + 11 - hairLength, 28, hairColor);
+		generateRect(x - 3, x - 3, y - 2, y + 2, z + 11 - hairLength, 27, hairColor);
+		generateRect(x + 3, x + 3, y - 1, y + 1, z + 11 - hairLength, 28, hairColor);
+		generateRect(x + 3, x + 3, y - 2, y + 2, z + 11- hairLength, 27, hairColor);
+	}
+	generateRect(x - 1, x + 1, y - 2, y - 2, z + 14, z + 14, skinTone);
+	generateRect(x - 1, x + 1, y - 2, y - 2, z + 11, z + 11, pConstants->BLACK);
+	generateBlock(x - 1, y - 2, z + 13, pConstants->BLACK);
+	generateBlock(x + 1, y - 2, z + 13, pConstants->BLACK);
+	generateBlock(x, y - 3, z + 12, noseSkinTone);
+	generateRect(x - 2, x - 1, y - 1, y + 1, z, z, pConstants->BLACK);
+	generateRect(x + 1, x + 2, y - 1, y + 1, z, z, pConstants->BLACK);
+	generateRect(x - 2, x - 1, y, y + 1, z + 1, z + 3, pantsColor);
+	generateRect(x + 1, x + 2, y, y + 1, z + 1, z + 4, pantsColor);
+	generateRect(x - 2, x + 2, y - 1, y + 2, z + 4, z + 4, pantsColor);
+	generateRect(x - 2, x + 2, y - 1, y + 2, z + 5, z + 8, shirtColor);
+	generateRect(x - 3, x - 3, y - 4, y + 1, z + 4, z + 4, pConstants->BROWN);
+	generateRect(x - 3, x - 3, y - 5, y - 5, z + 3, z + 5, pConstants->GRAY);
+	generateBlock(x - 3, y - 4, z + 2, pConstants->GRAY);
+	generateBlock(x - 3, y - 4, z + 6, pConstants->GRAY);
+	generateRect(x + 3, x + 3, y, y, z + 5, z + 6, shirtColor);
+	generateRect(x - 3, x - 3, y, y, z + 5, z + 6, shirtColor);
+	generateBlock(x + 3, y, z + 4, skinTone);
+	generateBlock(x - 3, y, z + 4, skinTone);
 }
 
 void BlockComp::generateStem(int x, int y, int z, int height, Constants::RGBcolor color)
